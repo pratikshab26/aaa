@@ -1,0 +1,25 @@
+Assignment 3
+
+1)import pandas as pd
+import numpy as np
+import sklearn
+from sklearn import datasets
+2)iris=datasets.load_iris()
+iris
+3)df=pd.DataFrame(iris['data'])
+df.head()
+4)df[4]=iris['target']
+df.head()
+5)df.rename(columns={0:'SepalLengthCm',1:'SepalwidthCm',2:'PetalLengthCm',3:'PetalWidthCm',4:'Species'},inplace=True)
+df.head()
+6)df.describe()
+7)df.shape
+8)df.mean()
+9)df.median()
+10)df.Species.mode()
+11)df.groupby(['Species']).count()
+12)df.SepalLengthCm.std()
+13)df.SepalwidthCm.std()
+14)df.PetalLengthCm.std()
+15)df.PetalWidthCm.std()
+16)df.min()

@@ -1,0 +1,54 @@
+1) import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+2)df=pd.read_csv("heart.csv")
+  df
+3)df.head()
+4)df.tail()
+5)df.shape
+6)df.isnull()
+7)df.isnull().sum()
+8)df.info()
+9)df.describe()
+10)x=df.drop("Fbs",axis=1)
+   x
+11)print(df.dtypes)
+12)print(type(df.Fbs))
+13)df.notnull()
+14)df.notnull().sum()
+15)print(df.columns)
+16)print(df.columns.values)
+17)df.index
+18)df.describe(include='all')
+19)df.sort_index(axis=1,ascending=True)
+   #axis 0=values
+   #axis 1=col name
+20)df.Fbs or df['Fbs']
+21)df.iloc[0:3]
+22)df.iloc[0,3]
+23)df.iloc[3]
+24)df.iloc[[1,2,4],[2,4]]
+25)df.loc[3:7,['Chol','Ca']]
+26)avg_ca=df["Ca"].astype("float").mean(axis=0)
+   print("Average of ca = ",avg_ca)
+27)df["Ca"].replace(np.nan,avg_ca,inplace=True)
+   df.isnull().sum()
+28)print(df['Thal'].value_counts())
+29)print(df['Thal'].value_counts().idxmax())
+30)print(df['Thal'].value_counts().idxmin())
+31)df['Thal'].replace(np.nan,'normal',inplace=True)
+   df.isnull().sum()
+32)df.dropna(subset=['Age'],axis=0,inplace=True)
+   df.head(5)
+33)df.reset_index(drop=True,inplace=True)
+   df.head()
+34)plt.scatter(df.Chol,df.Fbs)
+   plt.xlabel("Cholestrol")
+   plt.ylabel("MaxHR or not")
+35)df["MaxHR"]=df["MaxHR"]/df["MaxHR"].max()
+   df.MaxHR.head()
+   #normalization
+36)df["Oldpeak"]=df["Oldpeak"].astype("int")
+   df.dtypes
+37)pd.get_dummies(df,dtype='int')

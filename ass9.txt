@@ -1,0 +1,11 @@
+Assignment 9
+
+1)
+import seaborn as sns
+df=sns.load_dataset('titanic')
+df
+
+2)
+sns.boxplot(x=df['sex'],y=df['age'],hue=df['survived'],palette='Set2')
+
+3)sns.boxplot(x=df['sex'],y=df['age'])

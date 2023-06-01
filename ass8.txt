@@ -1,0 +1,63 @@
+Assignment 8
+
+1)
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+
+2)
+df=sns.load_dataset('titanic')
+df.head()
+
+3)sns.distplot(x=df['age'],bins =10)
+
+4)sns.distplot(df['age'],bins=10,kde=False)
+
+5)sns.jointplot(x=df['age'],y=df['fare'],kind='scatter')
+
+6)sns.jointplot(x=df['age'],y=df['fare'],kind='hex')
+
+7)sns.rugplot(df['fare'])
+
+8)sns.barplot(x=df['sex'],y=df['age'])
+
+9)sns.countplot(x=df['sex'])
+
+10)sns.boxplot(x=df['sex'],y=df['age'])
+
+11)sns.boxplot(x=df['sex'],y=df['age'],hue=df['survived'])
+
+12)sns.violinplot(x=df['sex'],y=df['age'])
+
+13)sns.violinplot(x=df['sex'],y=df['age'],hue=df['survived'])
+
+14)sns.stripplot(x=df['sex'],y=df['age'],jitter=True)
+
+15)sns.stripplot(x=df['sex'],y=df['age'],jitter=False)
+
+16)sns.stripplot(x=df['sex'],y=df['age'],jitter=True,hue=df['survived'])
+
+17)sns.swarmplot(x=df['sex'],y=df['age'])
+
+18)sns.swarmplot(x=df['sex'],y=df['age'],hue=df['survived'])
+
+19)df.corr()
+
+20)
+corr=df.corr() 
+sns.heatmap(corr)
+
+21)
+corr=df.corr() 
+sns.heatmap(corr,annot=True)
+
+23)sns.heatmap(corr,cmap='rainbow')
+
+24)
+corr=df.corr() 
+sns.clustermap(corr)
+
+25)sns.histplot(df['fare'],kde=False,bins=10)
+

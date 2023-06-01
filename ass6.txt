@@ -1,0 +1,74 @@
+Assignment 6
+
+1)
+import pandas as pd
+import matplotlib.pyplot as plt
+
+2)
+df=pd.read_csv("iris.csv")
+df.head()
+
+3)df.shape
+
+4)df.tail()
+
+5)df.info()
+
+6)df.describe()
+
+7)df.isnull().sum()
+
+8)
+x=df.drop(['Species','Id'],axis=1)
+y=df.drop(['SepalLengthCm','SepalWidthCm','PetalLengthCm','PetalWidthCm','Id'],axis=1)
+print(x)
+print(y)
+print(x.shape)
+print(y.shape)
+
+9)
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,shuffle=True)
+print(x_train.shape)
+print(x_test.shape)
+print(y_train.shape)
+print(y_test.shape)
+
+10)
+from sklearn.naive_bayes import  GaussianNB
+model=GaussianNB()
+model.fit(x_train,y_train)
+
+11)
+y_pred=model.predict(x_test)
+model.score(x_test,y_test)
+
+12)
+from sklearn.metrics import accuracy_score,confusion_matrix,ConfusionMatrixDisplay
+print(accuracy_score(y_test,y_pred))
+
+13)
+cm=confusion_matrix(y_test,y_pred)
+disp=ConfusionMatrixDisplay(confusion_matrix=cm)
+print("Confusion matrix")
+print(cm)
+
+14)
+disp.plot()
+plt.show()
+
+15)
+def get_confusion_matrix_values(y_true,y_pred):
+    cm=confusion_matrix(y_true,y_pred)
+    return(cm[0][0],cm[0][1],cm[1][0],cm[1][1])
+
+TP,FP,FN,TN =get_confusion_matrix_values(y_test,y_pred)
+print("TP: ",TP)
+print("FP: ",FP)
+print("FN: ",FN)
+print("TN: ",TN)
+
+16)
+print("The Accuracy is ",(TP+TN)/(TP+TN+FP+FN))
+print("The precision is ",TP/(TP+FP))
+print("The recall is ",TP/(TP+FN))

@@ -1,0 +1,56 @@
+Assignment 7
+
+1)
+import nltk
+# nltk.download('punkt')
+# nltk.download('wordnet')
+# nltk.download('averaged_perceptron_tagger')
+# nltk.download('stopwords')
+from nltk import sent_tokenize
+from nltk import word_tokenize
+from nltk.corpus import stopwords
+
+2)
+text='Tokenization is the first step in text analytics. The process of breaking down a text paragraph into smaller chunks such as words or sentences is called Tokenization'
+
+3)
+token_sentence=nltk.sent_tokenize(text)
+print(token_sentence)
+
+4)
+token_words=nltk.word_tokenize(text)
+print(token_words)
+
+5)from nltk.stem import PorterStemmer
+
+6)
+stem=[]
+for i in token_words:
+    ps = PorterStemmer()
+    stem_word= ps.stem(i)
+    stem.append(stem_word)
+print(stem)
+
+7)
+import nltk
+# nltk.download('omw-1.4')
+from nltk.stem import WordNetLemmatizer
+lemmatizer=WordNetLemmatizer()
+
+8)
+leme=[]
+for i in stem:
+    lemetized_word=lemmatizer.lemmatize(i)
+    leme.append(lemetized_word)
+print(leme)
+
+9)print("Parts of speech: ",nltk.pos_tag(leme))
+
+10)
+sw=stopwords.words('english')
+print(sw)
+
+11)
+words = [word for word in text.split() if word.lower() not in sw]
+new_text = " ".join(words)
+print(new_text)

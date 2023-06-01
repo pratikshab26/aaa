@@ -1,0 +1,51 @@
+1)import pandas as pd
+  import numpy as np
+  import seaborn as sns
+  import matplotlib.pyplot as plt
+  from scipy import stats
+2)df=pd.read_csv("student.csv")
+  df
+3)df.isnull()
+4)df.head()
+5)df.tail()
+6)df.describe()
+7)df.info()
+8)df.columns
+9)df.isnull().sum()
+10)# converting roll no from TECOC342 -->342
+   for i in df['Roll no '].iteritems():
+       df['Roll no '][i[0]]=df['Roll no '][i[0]][-3:]
+   df.head()
+11)sns.boxplot(y=df['First year:   Sem 1'])
+12)sns.boxplot(y=df['First year:   Sem 2'])
+13)sns.boxplot(y=df['Second year:   Sem 1'])
+14)sns.boxplot(y=df['Second year:   Sem 2'])
+15)col=['First year:   Sem 1','First year:   Sem 2','Second year:   Sem 1','Second year:   Sem 2']
+   df.boxplot(col)
+16)series=pd.isnull(df["First year:   Sem 2"])
+   df[series]
+17)df.notnull()
+18)series1=pd.notnull(df["First year:   Sem 2"])
+   df[series1]
+19)ndf=df
+   ndf.fillna(0)
+20)nd=df
+   m=nd['First year:   Sem 1'].mean()
+   nd["First year:   Sem 1"].fillna(value=m,inplace=True)
+   nd
+21)ndf.replace(to_replace=np.nan,value=-99)
+22)ndf.dropna()
+23)#deleting column with null values
+   ndf.dropna(axis=1)
+24)#zscore
+   z=np.abs(stats.zscore(df["First year:   Sem 1"]))
+   print(z)
+25)#Finding outliers
+   threshold=0.01
+   sample_outliers=np.where(z<threshold)
+   sample_outliers
+26)#removing outlier
+   new_df=df
+   for i in sample_outliers:
+       new_df.drop(i,inplace=True)
+   new_df
